@@ -8,6 +8,7 @@ import DotPattern from "@/components/magicui/dot-pattern"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import DockLive from "@/components/dock-live"
 
 export const metadata: Metadata = {
   title: {
@@ -37,13 +38,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen bg-background font-sans antialiased overflow-hidden",
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem><SiteHeader />
+            <div className="relative flex min-h-screen flex-col py-20 lg:py-0 md:py-0 sm:py-20">
+              
 
               <div className="flex-1">{children}</div>
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 )}
               />
             </div>
+        
             <TailwindIndicator />
           </ThemeProvider>
         </body>

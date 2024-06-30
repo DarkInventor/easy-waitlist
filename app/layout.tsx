@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import DotPattern from "@/components/magicui/dot-pattern"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -43,7 +44,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
+
               <div className="flex-1">{children}</div>
+
+              <DotPattern
+                width={20}
+                height={20}
+                cx={1}
+                cy={1}
+                cr={1}
+                className={cn(
+                  "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+                )}
+              />
             </div>
             <TailwindIndicator />
           </ThemeProvider>
